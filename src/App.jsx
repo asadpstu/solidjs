@@ -2,11 +2,13 @@
 import styles from './App.module.css';
 import { Container } from "solid-bootstrap";
 import NavigateBar from './component/NavigateBar';
-import { Routes,Route } from 'solid-app-router';
+import { Routes,Route, useNavigate } from 'solid-app-router';
 import { lazy, Suspense } from "solid-js";
 import LazyLoading from './component/LazyLoading';
 
-
+import useRedux from "./redux/redux/useRedux";
+import actions from './redux/action/loginActions';
+import reduxStore from "./redux/store/loginStore";
 
 /**
  * Implementing lazy loading
@@ -27,7 +29,27 @@ const Login = lazy(() => import("./pages/Login"));
 */
 
 function App() {
-  console.log("App.jsx")
+  const [store,action] = useRedux(reduxStore,actions);
+  const navigate = useNavigate()
+  
+  /* Check if already loggedin */
+  const isLoggedIn = localStorage.getItem("login")
+  const isUserName = localStorage.getItem("username")
+  if(isLoggedIn && isUserName){
+    /* Fake api call */
+    const loginResponse = {
+      fullName : "Vladimir Putin",
+      userName : "putin007",
+      country : "Russia",
+      contact : "01325781848",
+      gender : "Male",
+      designation : "President"
+    }
+    action.addTodo(loginResponse);
+  }
+  else navigate('/login', { replace: true })
+  
+
   return (
     <>
       <NavigateBar />

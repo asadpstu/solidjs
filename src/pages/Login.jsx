@@ -2,9 +2,20 @@
 import { Row, Col, Card, InputGroup, FormControl, Button } from "solid-bootstrap";
 import { useNavigate } from 'solid-app-router'
 import { createSignal } from "solid-js";
+
+import useRedux from "../redux/redux/useRedux";
+import reduxStore from "../redux/store/loginStore";
+import actions from "../redux/action/loginActions";
+
+
 const Login = () => {
     const [loginPayload, setLoginPayload] = createSignal({});
+    const [store, action] = useRedux(reduxStore,actions);
+    
+    
     const navigate = useNavigate()
+    /* If already logged in */
+    if(store.userName ) navigate('/home', { replace: true })
 
     const loginPayloadFunc = (e) => {
         let temp = {}
@@ -20,8 +31,17 @@ const Login = () => {
             setTimeout(() => {
                 localStorage.setItem("login", 1)
                 localStorage.setItem("username", "Test-User-01")
+                const loginResponse = {
+                    fullName : "Vladimir Putin",
+                    userName : "putin007",
+                    country : "Russia",
+                    contact : "01325781848",
+                    gender : "Male",
+                    designation : "President"
+                }
+                action.addTodo(loginResponse);
                 navigate('/home', { replace: true })
-            }, 1000);
+            }, 10);
         }
         else
         {
@@ -29,13 +49,13 @@ const Login = () => {
         }
     }
     return (
-        <div class="mt-5">
+        <div style="margin-top:15%">
             <Row>
-                <Col lg={2} sm={12} md={12}>
+                <Col lg={3} sm={12} md={12}>
                 </Col>
-                <Col lg={8} sm={12} md={12}>
+                <Col lg={6} sm={12} md={12}>
                     <Card class="text-center">
-                        <Card.Header>Login</Card.Header>
+                        <Card.Header><b>User Sign-in</b></Card.Header>
                         <Card.Body>
                             <Row>
                                 <Col lg={12} sm={12} md={12}>
@@ -54,7 +74,7 @@ const Login = () => {
 
                             <Row>
                                 <Col lg={12} sm={12} md={12}>
-                                    <InputGroup class="mt-2">
+                                    <InputGroup class="mt-3">
                                         <InputGroup.Text id="basic-addon1">Password &nbsp;</InputGroup.Text>
                                         <FormControl
                                             placeholder="password"
@@ -71,7 +91,7 @@ const Login = () => {
                             <Row>
                                 <Col lg={4} sm={12} md={12}></Col>
                                 <Col lg={4} sm={12} md={12}>
-                                    <Button variant="primary" onclick={() => { loginFunc() }} style="width:100%" class="mb-5 mt-2"> Login</Button>
+                                    <Button variant="primary" onclick={() => { loginFunc() }} style="width:100%" class="mb-5 mt-3"> Login</Button>
                                 </Col>
                                 <Col lg={4} sm={12} md={12}></Col>
                             </Row>
@@ -80,7 +100,7 @@ const Login = () => {
 
                     </Card>
                 </Col>
-                <Col lg={2} sm={12} md={12}>
+                <Col lg={3} sm={12} md={12}>
                 </Col>
             </Row>
         </div>
