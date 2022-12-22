@@ -19,7 +19,7 @@ function Products() {
 
     }
     return (
-        <div>
+        <div class="same-layout">
             <Row>
                 <Col>
                     <div class="contentPadding"> 

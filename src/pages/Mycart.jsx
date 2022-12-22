@@ -1,7 +1,7 @@
 import {Row, Col } from "solid-bootstrap";
 const Mycart = () => {
     return (
-        <div>
+        <div class="same-layout">
             <Row>
                 <Col>
                     <div class="contentPadding"> My</div>

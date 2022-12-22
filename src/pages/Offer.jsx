@@ -1,7 +1,7 @@
 import {Row, Col } from "solid-bootstrap";
 const Offer = () => {
     return (
-        <div>
+        <div class="same-layout">
             <Row>
                 <Col>
                     <div class="contentPadding"> Offer</div>

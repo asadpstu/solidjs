@@ -53,7 +53,7 @@ function App() {
   return (
     <>
       <NavigateBar />
-      <Container style="margin-top:10px;">
+      <Container fluid>
         <Routes>
           {/* <Route path='/' element={<LazyLoading/>} /> */}
           <Route path='/home' element={<Suspense fallback={<LazyLoading/>}> <Home /> </Suspense> } />

@@ -15,7 +15,6 @@ code {
 .contentPadding {
   background-color:#FFF;
   height:200px;
-  padding:10px
 }
 .greetings{
   color:#ddd;
@@ -33,11 +32,11 @@ code {
 }
 .nav-title{
   font-size:20px;
-  font-weight:500
+  font-weight:400
 }
 .nav-item-text{
   margin-left:15px;
-  color:#000;
+  color:rgb(9, 2, 2);
   font-size:16px;
 }
 .nav-devider{
@@ -52,8 +51,19 @@ code {
   font-size:16px
 }
 .suggestions{
-  margin-right: 2px;
+  margin: 2px;
   background-color: rgba(142, 124, 124, 0.1);
   border: none!important;
   color: #000;
+}
+
+.suggestions-more{
+  margin: 2px;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none!important;
+  color: #000;
+}
+
+.same-layout{
+  margin:10px  20px  0px 20px;
 }

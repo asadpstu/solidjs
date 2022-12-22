@@ -2,13 +2,13 @@ import { Row, Col } from "solid-bootstrap";
 
 const Home = () => {
     return (
-        <div>
+        <div class="same-layout">
             <Row>
                 <Col>
-                    <div class="contentPadding"> Home</div>
+                    <div class=""> Home</div>
                 </Col>
                 <Col>
-                    <div class="contentPadding">
+                    <div class="">
                         Page
                     </div>
                 </Col>
